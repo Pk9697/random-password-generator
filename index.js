@@ -46,3 +46,17 @@ slider.oninput = function() {
     //!slider.value also works but don't know if this is the correct approach
   output.innerHTML = this.value;
 }
+
+pass1.addEventListener("click",function(){
+    // pass1.select();
+    // console.log(pass1.textContent)
+    navigator.clipboard.writeText(pass1.textContent);
+    alert("Copied the password: " + pass1.textContent);
+})
+pass2.addEventListener("click",function(){
+    // pass1.select();
+    // console.log(pass1.textContent)
+    navigator.clipboard.writeText(pass2.textContent);
+    alert("Copied the password: " + pass2.textContent);
+})
+
