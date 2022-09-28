@@ -10,11 +10,15 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 const btn=document.getElementById("btn");
 const pass1=document.getElementById("pass1");
 const pass2=document.getElementById("pass2");
-function randomCharactersArray(){
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+
+function randomCharactersArray(passLength=15){
     //of length 15
     // const charArray=[];
     let randomPassword="";
-    for(let i=0;i<15;i++){
+    for(let i=0;i<passLength;i++){
         const randomCharIdx=Math.floor(Math.random()*characters.length);
         // charArray.push(characters[randomCharIdx]);
         randomPassword+=characters[randomCharIdx];
@@ -26,7 +30,19 @@ function randomCharactersArray(){
 // console.log(randomCharactersArray())
 
 btn.addEventListener("click",function(){
-    pass1.textContent=randomCharactersArray();
-    pass2.textContent=randomCharactersArray();
+    console.log(slider.value)
+    pass1.textContent=randomCharactersArray(slider.value);
+    pass2.textContent=randomCharactersArray(slider.value);
     // console.log("clicked")
+
+
 })
+
+
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    //!slider.value also works but don't know if this is the correct approach
+  output.innerHTML = this.value;
+}
